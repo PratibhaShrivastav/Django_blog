@@ -1,7 +1,7 @@
-from django.config.urls import url,path
+from django.urls import path
 from blogapp import views
 
-app_name='blogapp'
+#app_name='blogapp'
 
 urlpatterns = [
     path('about/',views.AboutView.as_view(),name='about'),
@@ -14,6 +14,6 @@ urlpatterns = [
     path('post/(?P<pk>\d+)/comment/',views.add_comment_to_post,name='add-comment'),
     path('comment/(?P<pk>\d+)/approve/',views.approve_comment,name='approve-comment'),
     path('post/(?P<pk>\d+)/publish/',views.publish,name='publish-post'),
-    path('comment/(?P<pk>\d+)/remove/',views.delete_comment,name='delete-comment'),
+    path('comment/(?P<pk>\d+)/remove/',views.remove_comment,name='delete-comment'),
 
 ]

@@ -1,0 +1,15 @@
+{% extends 'blogapp/base.html' %}
+{% block bodyblock %}
+
+<div class="centerall">
+    {% for post in post_list%}
+        <div class="post">
+            <h1><a href={% url 'post-detail' pk=post.pk %}>{{post.title}}</a></h1>
+            <div class="date">
+                <p> Published on : {{post.publish_date|date:"D M Y"}}</p>
+            </div>
+            <a href={% url 'post-detail' pk=post.pk %}Comment : {{post.approve_comments.count}}</a>
+        </div>
+    {% endfor%}
+</div>
+{% endblock%}

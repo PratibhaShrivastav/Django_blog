@@ -1,0 +1,43 @@
+{% extends 'blogapp/base.html' %}
+{% block bodyblock %}
+
+<h1 class="posttitle spinner"> {{post.title}}</h1>
+{% if post.publish_date%}
+    <div class="date postdate">
+        {{post.publish_date}}
+    </div>
+{% else %}
+<a class="btn btn-primary" href={% url "publish-post" pk=post.pk %}> Publish </a>
+{% endif %}
+
+<p class="postcontent"> {{post.title|safe|linebreaks}}</p>
+
+{% if user.is_authenticated %}
+
+    <a class="btn btn-primary" href={% url "post-update" pk=post.pk %}> <span class="glyphicon glyphicon-pencil">Edit</span> </a>
+    <a class="btn btn-primary" href={% url "post-delete" pk=post.pk %}> <span class="glyphicon glyphicon-remove">Delete </span></a>
+
+{% endif %}
+
+<hr>
+
+<a class="btn btn-primary" href={% url "add-comment" pk=post.pk %}> <span class="glyphicon glyphicon-plus">Add comment</span> </a>
+
+<div class="container">
+{% for comment in post.comments.all%}
+<br>
+{% if user.is_authenticated or comment.approved_comment%}
+    {{comment.create_date}}
+    {% if not comment.approved_comment%}
+        <a class="btn btn-primary" href={% url "approve-comment" pk=post.pk %}> Approve comment</span> </a>
+    {% endif %}
+
+<p>{{comment.text|safe|linebreaks}}<p>
+<p> Posted by : {{comment.author}} </p>
+{% endif %}
+{% empty%}
+<p> No comments yet</p>
+{% endfor%}
+</div>
+
+{% endblock%}
