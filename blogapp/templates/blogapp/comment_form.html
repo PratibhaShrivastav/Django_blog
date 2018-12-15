@@ -1,11 +1,13 @@
 {% extends 'blogapp/base.html' %}
 {% block bodyblock %}
-
-<h1> New comment :</h1>
+<div class="comment">
+<h1 style="font-weight:bold"> New comment :</h1>
+<br>
 <form method="POST" class="post-form">
 {% csrf_token %}
 {{form.as_p}}
-<button type="submit" class="save btn btn-default"> Post comment </button>
+<button type="submit" class="save btn btn-info"> Post comment </button>
 </form>
+</div>
 
 {% endblock%}

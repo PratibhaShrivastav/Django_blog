@@ -1,11 +1,14 @@
 {% extends 'blogapp/base.html' %}
 {% block bodyblock %}
-{% for post in posts %}
+{% for post in post_list %}
 <div class="post">
+{% if not post.publish_date %}
+    <h1><a href={% url "post-detail" pk=post.pk %}>{{post.title}}</a> </h1>
     <p class="date">created: {{post.create_date|date:"D M Y"}}</p>
-    <h1><a href={% url "post-detail" pk=post.pk %} {{post.title}} </a></h1>
     <p>{{post.text|truncatechars:200}}</p>
+    <br>
 </div>
+{% endif %}
 {% endfor %}
 
 {% endblock%}

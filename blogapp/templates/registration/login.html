@@ -1,22 +1,22 @@
 {% extends 'blogapp/base.html' %}
 
-{% block body_block %}
+{% block bodyblock %}
 
 
-<div class="jumbotron">
+<div class="jumbotron" style="margin-top:100px;padding-left:20%;">
 
-    <h1> Please login below with required credentials! </h1>
-
+    <h2 style="font-weight:bold"> Please login below with required credentials! </h2>
+     <br>
     {% if form.errors %}
         <h3> Your username and password didnt match! </h3>
     {% endif %}
 
-    <form action={% url 'login'%} method="POST">
-        {% csrf_token %}
-        {% form.as_p %}
-
-        <input type='submit' class="btn btn-primary" value='Login'>
-        <input type='hidden' name='next' value='{{next}}'>
+    <form method="POST">
+        {% csrf_token %%}
+        {{form.as_p }}
+     <br>
+        <input type='submit' class="btn btn-primary btn-lg" value='Login' style="margin-left:25%">
+     <!-- <input type='hidden' name='next' value='{{next}}'>-->
 
     </form>
 

@@ -6,11 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
-    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- custom css -->
     <link rel="stylesheet" href={% static 'css/blog.css' %}>
@@ -19,24 +15,22 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
 
      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+   <!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <!-- <script src={% static 'js/loader.js'%}</script>-->
     </head>
-    <body class="spinner">
+    <body>
         
         <!--navbar-->
-        <nav class="navbar navbar-default navbar-dark techfont custom-navbar">
-         <a class="navbar-brand" href={% url post-list %}>Post list</a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav class="navbar navbar-default techfont">
+         <a class="navbar-brand techfont" href={% url 'post-list' %}>Post list</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav">
+         <ul class="nav navbar-nav">
          <li class="nav-item active">
-            <a class="nav-link" href={% url about%}>About <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href={% url 'about' %}>About <span class="sr-only">(current)</span></a>
          </li>
          <li class="nav-item">
             <a class="nav-link" href="https://www.github.com">Github</a>
@@ -46,7 +40,7 @@
          </li>
         </ul>
 
-        <ul class="nav navbar-nav nabar-right">
+        <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
          <li class="nav-item active">
             <a class="nav-link" href={% url 'new-post'%}>New Post <span class="sr-only">(current)</span></a>
@@ -62,17 +56,16 @@
          </li>
          {% else %}
            <li class="nav-item active">
-            <a class="nav-link" href={% url 'Login'%}>Login </a>
+            <a class="nav-link" href={% url 'login'%}>Login </a>
          </li>
          {% endif %}
         </ul>
         </div>
         </nav>
-
         <div class="content container">
             <div class="row">
-            {% block contentblock %}
-
+            {% block bodyblock %}
+              
             {% endblock%}
 
         </div>
