@@ -1,2 +1,2 @@
 # Django_blog
-A simple blog website with django
+A blog website with django
